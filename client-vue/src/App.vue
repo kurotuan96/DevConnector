@@ -10,8 +10,12 @@ import Navbar from "@/components/layout/Navbar";
 export default {
   name: "App",
   components: {
-    Navbar,
+    Navbar
   },
+
+  created() {
+    console.log(process.env.API_ENDPOINT);
+  }
 };
 </script>
 

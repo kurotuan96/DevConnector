@@ -8,7 +8,7 @@
 
     <ul>
       <li>
-        <router-link to="/">Developers</router-link>
+        <router-link to="/profiles">Developers</router-link>
       </li>
       <li>
         <router-link to="/register">Register</router-link>
@@ -22,9 +22,8 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "Navbar"
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
