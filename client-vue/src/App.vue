@@ -2,19 +2,28 @@
   <div id="app">
     <Navbar />
     <router-view />
+    <transition name="fade">
+      <Alert v-if="alertState.isShow" />
+    </transition>
+    <vue-progress-bar />
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/layout/Navbar";
+import Alert from "@/components/layout/Alert";
+import { mapGetters } from "vuex";
+
 export default {
   name: "App",
+
   components: {
-    Navbar
+    Navbar,
+    Alert
   },
 
-  created() {
-    console.log(process.env.API_ENDPOINT);
+  computed: {
+    ...mapGetters(["alertState"])
   }
 };
 </script>

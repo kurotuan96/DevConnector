@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <div class="alert alert-danger">Invalid credentials</div>
+  <section class="container">
     <h1 class="large text-primary">Sign In</h1>
     <p class="lead"><i class="fas fa-user"></i> Sign into Your Account</p>
     <form class="form" @submit.prevent="onSubmit">
@@ -26,10 +25,11 @@
     <p class="my-1">
       Don't have an account? <router-link to="/register">Sign Up</router-link>
     </p>
-  </div>
+  </section>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Login",
 
@@ -37,18 +37,33 @@ export default {
     return {
       formData: {
         email: "",
-        password: "",
-      },
+        password: ""
+      }
     };
   },
 
-  methods: {
-    onSubmit() {
-      console.log(this.formData);
-    },
+  computed: {
+    ...mapGetters("auth", ["isAuthenticated"])
   },
+
+  methods: {
+    ...mapActions("auth", ["login"]),
+    ...mapActions(["showAlert"]),
+
+    async onSubmit() {
+      try {
+        await this.login(this.formData);
+        this.$router.push({ name: "Dashboard" });
+      } catch (err) {
+        this.showAlert({
+          isShow: true,
+          text: err.response.data.errors[0].msg,
+          status: "danger"
+        });
+      }
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

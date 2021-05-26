@@ -1,10 +1,14 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import VueProgressBar from "vue-progressbar";
+import { loadingBarOptions } from "@/config/loading-bar";
 
-new Vue({
+Vue.use(VueProgressBar, loadingBarOptions);
+
+export default new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

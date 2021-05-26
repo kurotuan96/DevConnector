@@ -1,17 +1,42 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import auth from "@/store/modules/auth.store.js";
+import profile from "@/store/modules/profile.store.js";
 
 Vue.use(Vuex);
 
-const modules = {};
+const modules = {
+  auth,
+  profile
+};
 
-const state = {};
+const state = {
+  alertState: {
+    status: "",
+    data: [],
+    isShow: false
+  }
+};
 
-const mutations = {};
+const mutations = {
+  setAlertState(state, payload) {
+    state.alertState = payload;
+  }
+};
 
-const actions = {};
+const actions = {
+  showAlert({ commit }, payload) {
+    console.log(payload.data);
+    commit("setAlertState", payload);
+    setTimeout(() => {
+      commit("setAlertState", { ...payload, isShow: false });
+    }, 2000);
+  }
+};
 
-const getters = {};
+const getters = {
+  alertState: state => state.alertState
+};
 
 export default new Vuex.Store({
   state,
