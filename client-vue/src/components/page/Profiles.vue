@@ -1,53 +1,42 @@
 <template>
   <section class="container">
-    <h1 class="large text-primary">Developers</h1>
+    <h1 class="large text-primary">
+      Developers
+    </h1>
     <p class="lead">
-      <i class="fab fa-connectdevelop"></i> Browse and connect with developers
+      <i class="fab fa-connectdevelop" /> Browse and connect with developers
     </p>
     <div class="profiles">
-      <div class="profile bg-light">
+      <div
+        v-for="profile in profiles"
+        :key="profile._id"
+        class="profile bg-light"
+      >
         <img
           class="round-img"
-          src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
+          :src="profile.user.avatar"
           alt=""
-        />
+        >
         <div>
-          <h2>John Doe</h2>
-          <p>Developer at Microsoft</p>
-          <p>Seattle, WA</p>
-          <router-link to="/profiles/1" class="btn btn-primary"
-            >View Profile</router-link
+          <h2 v-text="profile.user.name" />
+          <p v-text="profile.status + ' at ' + profile.company" />
+          <p v-text="profile.location" />
+          <router-link
+            :to="`/profiles/${profile.user._id}`"
+            class="btn btn-primary"
           >
+            View Profile
+          </router-link>
         </div>
 
         <ul>
-          <li class="text-primary"><i class="fas fa-check"></i> HTML</li>
-          <li class="text-primary"><i class="fas fa-check"></i> CSS</li>
-          <li class="text-primary"><i class="fas fa-check"></i> JavaScript</li>
-          <li class="text-primary"><i class="fas fa-check"></i> Python</li>
-          <li class="text-primary"><i class="fas fa-check"></i> C#</li>
-        </ul>
-      </div>
-
-      <div class="profile bg-light">
-        <img
-          class="round-img"
-          src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
-          alt=""
-        />
-        <div>
-          <h2>John Doe</h2>
-          <p>Developer at Microsoft</p>
-          <p>Seattle, WA</p>
-          <router-link to="/profiles/2" class="btn btn-primary"
-            >View Profile</router-link
+          <li
+            v-for="(skill, index) in profile.skills"
+            :key="index"
+            class="text-primary"
           >
-        </div>
-
-        <ul>
-          <li class="text-primary"><i class="fas fa-check"></i> HTML</li>
-          <li class="text-primary"><i class="fas fa-check"></i> CSS</li>
-          <li class="text-primary"><i class="fas fa-check"></i> JavaScript</li>
+            <i class="fas fa-check" /> {{ skill }}
+          </li>
         </ul>
       </div>
     </div>
@@ -55,9 +44,29 @@
 </template>
 
 <script>
+import store from '@/store'
+import {mapGetters} from 'vuex'
+
 export default {
-  name: "Profiles"
-};
+  name: 'Profiles',
+
+  async beforeRouteEnter (to, from, next) {
+    try {
+      await store.dispatch('profile/getAllProfiles')
+    } catch (e) {
+      await store.dispatch('showAlert', {
+        isShow: true,
+        status: 'danger',
+        data: e.response.data.errors
+      })
+    }
+    next()
+  },
+
+  computed: {
+    ...mapGetters('profile', ['profiles'])
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

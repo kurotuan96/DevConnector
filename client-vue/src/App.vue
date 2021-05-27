@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Navbar from "@/components/layout/Navbar";
-import Alert from "@/components/layout/Alert";
-import { mapGetters } from "vuex";
+import Navbar from '@/components/layout/Navbar'
+import Alert from '@/components/layout/Alert'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     Navbar,
@@ -23,9 +23,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["alertState"])
+    ...mapGetters(['alertState'])
   }
-};
+}
 </script>
 
 <style>

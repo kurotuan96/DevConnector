@@ -2,7 +2,9 @@
   <section class="landing">
     <div class="dark-overlay">
       <div class="landing-inner">
-        <h1 class="x-large">Developer Connector</h1>
+        <h1 class="x-large">
+          Developer Connector
+        </h1>
 
         <p class="lead">
           Create a developer profile/portfolio, share posts and get help from
@@ -10,10 +12,18 @@
         </p>
 
         <div class="buttons">
-          <router-link to="/register" class="btn btn-primary">
+          <router-link
+            to="/register"
+            class="btn btn-primary"
+          >
             Sign Up
           </router-link>
-          <router-link to="/login" class="btn btn-light"> Login </router-link>
+          <router-link
+            to="/login"
+            class="btn btn-light"
+          >
+            Login
+          </router-link>
         </div>
       </div>
     </div>
@@ -22,8 +32,8 @@
 
 <script>
 export default {
-  name: "Landing",
-};
+  name: 'Landing'
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,31 +1,31 @@
-import { ApiService } from "./api.service";
+import { ApiService } from './api.service'
 
-const baseUrl = "profile";
+const baseUrl = 'profile'
 
 export const ProfileService = {
   /**
    * Get all profile
    * @returns
    */
-  getProfiles() {
-    return ApiService.get(`${baseUrl}`);
+  getProfiles () {
+    return ApiService.get(`${baseUrl}`)
   },
 
   /**
    * Get logged in user profile
    * @returns
    */
-  getLoggedInProfile() {
-    return ApiService.get(`${baseUrl}/me`);
+  getLoggedInProfile () {
+    return ApiService.get(`${baseUrl}/me`)
   },
 
   /**
-   * Get profile by id
-   * @param {*} profile_id
+   * Get profile by userId
+   * @param {*} userId
    * @returns
    */
-  getProfile(profile_id) {
-    return ApiService.get(`${baseUrl}/${profile_id}`);
+  getProfile (userId) {
+    return ApiService.get(`${baseUrl}/user/${userId}`)
   },
 
   /**
@@ -33,8 +33,8 @@ export const ProfileService = {
    * @param {*} userName
    * @returns
    */
-  getGithubRepo(userName) {
-    return ApiService.get(`${baseUrl}/github/${userName}`);
+  getGithubRepo (userName) {
+    return ApiService.get(`${baseUrl}/github/${userName}`)
   },
 
   /**
@@ -42,16 +42,16 @@ export const ProfileService = {
    * @param {*} body
    * @returns
    */
-  updateProfile(body) {
-    return ApiService.post(`${baseUrl}`, body);
+  updateProfile (body) {
+    return ApiService.post(`${baseUrl}`, body)
   },
 
   /**
    * Delete account
    * @returns
    */
-  deleteAccount() {
-    return ApiService.delete(`${baseUrl}`);
+  deleteAccount () {
+    return ApiService.delete(`${baseUrl}`)
   },
 
   /**
@@ -59,17 +59,17 @@ export const ProfileService = {
    * @param {*} body
    * @returns
    */
-  addExp(body) {
-    return ApiService.put(`${baseUrl}/experience`, body);
+  addExp (body) {
+    return ApiService.put(`${baseUrl}/experience`, body)
   },
 
   /**
    * Delete experience
-   * @param {*} exp_id
+   * @param {*} expId
    * @returns
    */
-  deleteExp(exp_id) {
-    return ApiService.delete(`${baseUrl}/experience/${exp_id}`);
+  deleteExp (expId) {
+    return ApiService.delete(`${baseUrl}/experience/${expId}`)
   },
 
   /**
@@ -77,16 +77,16 @@ export const ProfileService = {
    * @param {*} body
    * @returns
    */
-  addEdu(body) {
-    return ApiService.put(`${baseUrl}/education`, body);
+  addEdu (body) {
+    return ApiService.put(`${baseUrl}/education`, body)
   },
 
   /**
    * Delete education
-   * @param {*} edu_id
+   * @param {*} eduId
    * @returns
    */
-  deleteEdu(edu_id) {
-    return ApiService.delete(`${baseUrl}/education/${edu_id}`);
+  deleteEdu (eduId) {
+    return ApiService.delete(`${baseUrl}/education/${eduId}`)
   }
-};
+}

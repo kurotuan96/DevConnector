@@ -1,7 +1,7 @@
-import { ApiService } from "./api.service";
+import { ApiService } from './api.service'
 
-const baseUrl = "auth";
-const userUrl = "users";
+const baseUrl = 'auth'
+const userUrl = 'users'
 
 export const AuthService = {
   /**
@@ -9,16 +9,16 @@ export const AuthService = {
    * @param {*} auth
    * @returns
    */
-  getAuthToken(auth) {
-    return ApiService.post(`${baseUrl}`, auth);
+  getAuthToken (auth) {
+    return ApiService.post(`${baseUrl}`, auth)
   },
 
   /**
    *
    * @returns
    */
-  getUserInfo() {
-    return ApiService.get(`${baseUrl}`);
+  getUserInfo () {
+    return ApiService.get(`${baseUrl}`)
   },
 
   /**
@@ -26,7 +26,7 @@ export const AuthService = {
    * @param {*} body
    * @returns
    */
-  registUser(body) {
-    return ApiService.post(`${userUrl}`, body);
+  registUser (body) {
+    return ApiService.post(`${userUrl}`, body)
   }
-};
+}

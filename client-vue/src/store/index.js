@@ -1,42 +1,41 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import auth from "@/store/modules/auth.store.js";
-import profile from "@/store/modules/profile.store.js";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import auth from '@/store/modules/auth.store.js'
+import profile from '@/store/modules/profile.store.js'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const modules = {
   auth,
   profile
-};
+}
 
 const state = {
   alertState: {
-    status: "",
+    status: '',
     data: [],
     isShow: false
   }
-};
+}
 
 const mutations = {
-  setAlertState(state, payload) {
-    state.alertState = payload;
+  setAlertState (state, payload) {
+    state.alertState = payload
   }
-};
+}
 
 const actions = {
-  showAlert({ commit }, payload) {
-    console.log(payload.data);
-    commit("setAlertState", payload);
+  showAlert ({ commit }, payload) {
+    commit('setAlertState', payload)
     setTimeout(() => {
-      commit("setAlertState", { ...payload, isShow: false });
-    }, 2000);
+      commit('setAlertState', { ...payload, isShow: false })
+    }, 2000)
   }
-};
+}
 
 const getters = {
   alertState: state => state.alertState
-};
+}
 
 export default new Vuex.Store({
   state,
@@ -44,4 +43,4 @@ export default new Vuex.Store({
   actions,
   mutations,
   getters
-});
+})

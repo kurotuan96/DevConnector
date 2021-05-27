@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "Alert",
+  name: 'Alert',
 
   computed: {
-    ...mapGetters(["alertState"])
+    ...mapGetters(['alertState'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

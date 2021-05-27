@@ -1,24 +1,31 @@
 <template>
   <section class="container">
-    <h1 class="large text-primary">Sign Up</h1>
-    <p class="lead"><i class="fas fa-user"></i> Create Your Account</p>
-    <form class="form" @submit.prevent="onSubmit">
+    <h1 class="large text-primary">
+      Sign Up
+    </h1>
+    <p class="lead">
+      <i class="fas fa-user" /> Create Your Account
+    </p>
+    <form
+      class="form"
+      @submit.prevent="onSubmit"
+    >
       <div class="form-group">
         <input
+          v-model="formData.name"
           type="text"
           placeholder="Name"
           name="name"
-          v-model="formData.name"
           required
-        />
+        >
       </div>
       <div class="form-group">
         <input
+          v-model="formData.email"
           type="email"
           placeholder="Email Address"
           name="email"
-          v-model="formData.email"
-        />
+        >
         <small class="form-text">
           This site uses Gravatar so if you want a profile image, use a Gravatar
           email
@@ -26,52 +33,58 @@
       </div>
       <div class="form-group">
         <input
+          v-model="formData.password"
           type="password"
           placeholder="Password"
           name="password"
           minLength="6"
-          v-model="formData.password"
-        />
+        >
       </div>
       <div class="form-group">
         <input
+          v-model="formData.passwordConfirm"
           type="password"
           placeholder="Confirm Password"
           name="passwordConfirm"
           minLength="6"
-          v-model="formData.passwordConfirm"
-        />
+        >
       </div>
-      <input type="submit" class="btn btn-primary" value="Register" />
+      <input
+        type="submit"
+        class="btn btn-primary"
+        value="Register"
+      >
     </form>
     <p class="my-1">
-      Already have an account? <router-link to="/login">Sign In</router-link>
+      Already have an account? <router-link to="/login">
+        Sign In
+      </router-link>
     </p>
   </section>
 </template>
 
 <script>
-import { AuthService } from "@/api";
-import { mapActions } from "vuex";
+import { AuthService } from '@/api'
+import { mapActions } from 'vuex'
 
 export default {
-  name: "Register",
+  name: 'Register',
 
-  data() {
+  data () {
     return {
       formData: {
-        name: "",
-        email: "",
-        password: "",
-        passwordConfirm: ""
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirm: ''
       }
-    };
+    }
   },
 
   methods: {
-    ...mapActions(["showAlert"]),
+    ...mapActions(['showAlert']),
 
-    async onSubmit() {
+    async onSubmit () {
       if (
         this.formData.password &&
         this.formData.password === this.formData.passwordConfirm
@@ -81,27 +94,31 @@ export default {
             name: this.formData.name,
             email: this.formData.email,
             password: this.formData.password
-          };
-          await AuthService.registUser(body);
+          }
+          await AuthService.registUser(body)
 
           this.showAlert({
             isShow: true,
-            text: "Your registration has been successfully completed",
-            status: "success"
-          });
+            data: [{msg: 'Your registration has been successfully completed'}],
+            status: 'success'
+          })
         } catch (err) {
           this.showAlert({
             isShow: true,
-            text: err.response.data.errors[0].msg,
-            status: "danger"
-          });
+            data: err.response.data.errors,
+            status: 'danger'
+          })
         }
       } else {
-        console.log("Password not match");
+        this.showAlert({
+          isShow: true,
+          data: [{msg: 'Password does not match'}],
+          status: 'danger'
+        })
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>
