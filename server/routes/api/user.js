@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { jwtSecret } = require('../../variable')
 
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
@@ -70,7 +71,7 @@ router.post(
       };
 
       jwt.sign(
-        payload, process.env.jwtSecret,
+        jwtSecret,
         {
           expiresIn: 360000,
         },

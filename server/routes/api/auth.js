@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
+const { jwtSecret } = require('../../variable')
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -70,7 +71,7 @@ router.post(
 
 			jwt.sign(
 				payload,
-				process.env.jwtSecret,
+				jwtSecret,
 				{
 					expiresIn: 3600,
 				},
