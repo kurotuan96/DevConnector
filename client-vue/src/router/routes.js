@@ -7,6 +7,7 @@ import ProfileForm from '@/components/page/ProfileForm'
 import Dashboard from '@/components/page/Dashboard'
 import SubProfileForm from '@/components/page/SubProfileForm'
 import { AuthGuard, ResolveGuard } from '@/router/guards'
+import PostLayout from '@/components/page/PostLayout'
 
 export const routes = [
   {
@@ -73,6 +74,18 @@ export const routes = [
     path: '/profile/education',
     name: 'Education',
     component: SubProfileForm,
+    beforeEnter: ResolveGuard([AuthGuard])
+  },
+  {
+    path: '/posts',
+    name: 'Posts',
+    component: PostLayout,
+    beforeEnter: ResolveGuard([AuthGuard])
+  },
+  {
+    path: '/posts/:postId',
+    name: 'PostDetail',
+    component: PostLayout,
     beforeEnter: ResolveGuard([AuthGuard])
   }
 ]

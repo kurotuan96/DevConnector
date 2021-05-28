@@ -1,10 +1,12 @@
 import { ProfileService } from '@/api'
 import axios from 'axios'
+import Cookie from 'js-cookie'
 
 const state = {
   profiles: [],
   profile: {},
-  githubRepos: []
+  githubRepos: [],
+  currentUserId: Cookie.get('currentUserId')
 }
 
 const mutations = {
@@ -18,6 +20,11 @@ const mutations = {
 
   setGithubRepos (state, payload) {
     state.githubRepos = payload
+  },
+
+  setCurrentUserId (state, payload) {
+    state.currentUserId = payload
+    Cookie.set('currentUserId', payload)
   }
 }
 
@@ -30,6 +37,7 @@ const actions = {
   async getCurrentProfile ({ commit }) {
     const { data } = await ProfileService.getLoggedInProfile()
     commit('setProfile', data)
+    commit('setCurrentUserId', data.user._id)
   },
 
   async getProfile ({ commit }, userId) {
@@ -72,7 +80,8 @@ const actions = {
 const getters = {
   profiles: state => state.profiles,
   profile: state => state.profile,
-  githubRepos: state => state.githubRepos
+  githubRepos: state => state.githubRepos,
+  currentUserId: state => state.currentUserId
 }
 
 export default {

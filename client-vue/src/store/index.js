@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import auth from '@/store/modules/auth.store.js'
-import profile from '@/store/modules/profile.store.js'
+import auth from '@/store/modules/auth.store'
+import profile from '@/store/modules/profile.store'
+import post from '@/store/modules/post.store'
 
 Vue.use(Vuex)
 
 const modules = {
   auth,
-  profile
+  profile,
+  post
 }
 
 const state = {

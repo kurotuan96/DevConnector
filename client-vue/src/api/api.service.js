@@ -37,9 +37,5 @@ export const ApiService = {
 
   put (url, data, config = {}) {
     return axiosInstance.put(`${url}`, data, config)
-  },
-
-  patch (url, data, config = {}) {
-    return axiosInstance.patch(`${url}`, data, config)
   }
 }
