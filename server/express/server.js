@@ -1,13 +1,13 @@
 const express = require('express');
-const connectDB = require('./config/db');
+const connectDB = require('../config/db');
 const cors = require('cors');
 const path = require('path')
 const serverless = require('serverless-http')
 
-const userRoute = require('./routes/api/user');
-const authRoute = require('./routes/api/auth');
-const profileRoute = require('./routes/api/profile');
-const postRoute = require('./routes/api/post');
+const userRoute = require('../routes/api/user');
+const authRoute = require('../routes/api/auth');
+const profileRoute = require('../routes/api/profile');
+const postRoute = require('../routes/api/post');
 
 const app = express();
 
