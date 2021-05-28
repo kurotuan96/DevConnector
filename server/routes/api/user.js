@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { jwtSecret } = require('../../variable')
+const { jwtSecret } = require('../../config/variable')
 
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');

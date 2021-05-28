@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const { githubClientId, githubSecret } = require('../../variable')
+const { githubClientId, githubSecret } = require('../../config/variable')
 
 const { check, validationResult } = require('express-validator');
 
