@@ -157,7 +157,7 @@
 
 <script>
 import store from '@/store'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
   name: 'Profile',
@@ -190,6 +190,14 @@ export default {
 
   computed: {
     ...mapGetters('profile', ['profile', 'githubRepos'])
+  },
+
+  methods: {
+    ...mapMutations('profile', ['setProfile'])
+  },
+
+  beforeDestroy () {
+    this.setProfile({})
   }
 }
 </script>
