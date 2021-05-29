@@ -14,6 +14,7 @@ const mutations = {
   setLogout (state) {
     state.isAuthenticated = false
     Cookie.set('token', '')
+    Cookie.set('currentUserId', '')
   }
 }
 
