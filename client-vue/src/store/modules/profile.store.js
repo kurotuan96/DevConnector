@@ -1,12 +1,10 @@
 import { ProfileService } from '@/api'
 import axios from 'axios'
-import Cookie from 'js-cookie'
 
 const state = {
   profiles: [],
   profile: {},
-  githubRepos: [],
-  currentUserId: Cookie.get('currentUserId')
+  githubRepos: []
 }
 
 const mutations = {
@@ -20,11 +18,6 @@ const mutations = {
 
   setGithubRepos (state, payload) {
     state.githubRepos = payload
-  },
-
-  setCurrentUserId (state, payload) {
-    state.currentUserId = payload
-    Cookie.set('currentUserId', payload)
   }
 }
 
@@ -80,8 +73,7 @@ const actions = {
 const getters = {
   profiles: state => state.profiles,
   profile: state => state.profile,
-  githubRepos: state => state.githubRepos,
-  currentUserId: state => state.currentUserId
+  githubRepos: state => state.githubRepos
 }
 
 export default {

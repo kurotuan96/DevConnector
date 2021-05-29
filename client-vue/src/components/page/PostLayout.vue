@@ -194,7 +194,7 @@ export default {
 
   computed: {
     ...mapGetters('post', ['post', 'posts']),
-    ...mapGetters('profile', ['currentUserId'])
+    ...mapGetters('auth', ['currentUserId'])
   },
 
   data () {
