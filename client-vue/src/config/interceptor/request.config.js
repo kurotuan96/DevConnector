@@ -7,7 +7,7 @@ export const axiosConfig = {
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://dev-connector-community.netlify.app'
+    'Access-Control-Allow-Origin': '*'
   },
   timeout: 30000 // request timeout
 }
