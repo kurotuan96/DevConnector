@@ -154,6 +154,7 @@ export default {
 
   async beforeRouteEnter (to, from, next) {
     try {
+      await store.dispatch('auth/getUserInfo')
       await store.dispatch('profile/getCurrentProfile')
     } catch (err) {
       store.dispatch('showAlert', {
