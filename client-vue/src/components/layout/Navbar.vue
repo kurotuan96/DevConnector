@@ -59,9 +59,11 @@ export default {
 
   methods: {
     ...mapMutations('auth', ['setLogout']),
+    ...mapMutations('profile', ['setProfile']),
 
     onLogout () {
       this.setLogout()
+      this.setProfile({})
       this.$router.push({ name: 'Login' })
     }
   }
