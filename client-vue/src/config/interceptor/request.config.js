@@ -6,7 +6,8 @@ export const axiosConfig = {
   baseURL: process.env.VUE_APP_API_ENDPOINT,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'https://dev-connector-community.netlify.app'
   },
   timeout: 30000 // request timeout
 }
